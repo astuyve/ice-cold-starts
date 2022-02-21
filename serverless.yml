@@ -1,0 +1,20 @@
+service: ice-cold-starts
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  memorySize: 128
+
+functions:
+  iceColdStartTimeout:
+    handler: timeout.iceColdStartTimeout
+    events:
+      - http:
+          path: /iceColdStartTimeout
+          method: post
+  iceColdStartError:
+    handler: error.iceColdStartError
+    events:
+      - http:
+          path: /iceColdStartError
+          method: post
